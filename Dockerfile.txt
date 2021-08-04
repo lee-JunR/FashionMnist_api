@@ -1,10 +1,10 @@
 FROM python:3.7.6
 
-RUN echo "mnist1.1"
+RUN echo "mnist1.2"
 
 WORKDIR /home/
 
-RUN https://github.com/lee-JunR/FashionMnist_api.git
+RUN git clone https://github.com/lee-JunR/FashionMnist_api
 
 WORKDIR /home/FashionMnist_api
 
