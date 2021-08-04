@@ -4,7 +4,7 @@ RUN echo "mnist1.0"
 
 WORKDIR /home/
 
-RUN https://github.com/lee-JunR/FashionMnist_api
+RUN https://github.com/lee-JunR/FashionMnist_api.git
 
 WORKDIR /home/FashionMnist_api
 
