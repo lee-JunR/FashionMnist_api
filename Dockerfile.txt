@@ -1,0 +1,18 @@
+FROM python:3.7.6
+
+RUN echo "mnist1.0"
+
+WORKDIR /home/
+
+RUN https://github.com/lee-JunR/FashionMnist_api
+
+WORKDIR /home/FashionMnist_api
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+RUN python manage.py migrate
+
+EXPOSE 5050
+

@@ -1,16 +1,20 @@
 from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.shortcuts import render
-from django.core.files.storage import default_storage
+
+from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
+
+#html 에서 받은 이미지를 resize 하기 위한 패키지
 import cv2
 import numpy as np
-from rest_framework.views import APIView
-from rest_framework.viewsets import ViewSet, ModelViewSet
+
+#모델을 load하기 위한 패키지
+from tensorflow.python.keras.models import load_model
 
 from .models import Image
 from .serializers import image_serializers
-from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
-from tensorflow.python.keras.models import load_model
+
 def index(request):
     if request.method == 'POST':
 
@@ -35,7 +39,7 @@ def index(request):
         # serializer = image_serializers(data=request.data)
         # if serializer.is_valid():
         #     serializer.save()
-        return render(request, "mnistapp/insert_img.html", {"predictions": label})
+        return render(request, "mnistapp/insert_img.html", {"predictions": "이것은 "+label+"입니다" })
     else:
         return render(request, "mnistapp/insert_img.html")
 

@@ -1,7 +1,5 @@
-from rest_framework import serializers, viewsets
+from rest_framework import serializers
 from .models import Image
-import base64
-
 class image_serializers(serializers.ModelSerializer):
     image = serializers.ImageField(use_url=True)
     class Meta:
