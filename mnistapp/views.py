@@ -16,7 +16,6 @@ def index(request):
 
         class_name = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                        'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
-
         # 이미지 업로드
         img = cv2.imdecode(np.fromstring(request.FILES['image'].read(), np.uint8), cv2.IMREAD_GRAYSCALE)
         request.FILES['image'].seek(0)
@@ -32,10 +31,10 @@ def index(request):
         # Model 사용하기
         prediction = model.predict(img.reshape(-1, 28, 28, 1))
         label = class_name[np.argmax(prediction)]
-        request.data['title'] = label
-        serializer = image_serializers(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
+        # request['title'] = label
+        # serializer = image_serializers(data=request.data)
+        # if serializer.is_valid():
+        #     serializer.save()
         return render(request, "mnistapp/insert_img.html", {"predictions": label})
     else:
         return render(request, "mnistapp/insert_img.html")
